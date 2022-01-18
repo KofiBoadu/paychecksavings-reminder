@@ -1,11 +1,4 @@
-import datetime
-
-import calendar
-
-import smtplib
-
-
-import datetime
+from datetime import datetime
 import calendar
 import smtplib
 
@@ -56,10 +49,6 @@ def paycheck():
     return days
 
 
-"""
-This is testing of the entire script
-////////////////
-"""
 
 if __name__== '__main__':
     
@@ -68,44 +57,108 @@ if __name__== '__main__':
     start= Savings(int(input("what percentage do you want to save?: ")),int(input("how much do you get paid an hour?:")),int(input("how many hours do you work a week?: ")))
 
 
-
     attempt= 1
    
 
 
     while True:
-        payday= input("ENTER THE DAY YOU GET PAID e.g monday: ").capitalize()
+        
+        
+        
+        weekdays1= []
+
+        days= ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+    
+    
+
+        a=calendar.Calendar(firstweekday=0)
+
+        [weekdays1.append(i) for i in a.iterweekdays()]
+
+        x= dict(zip(weekdays1,days))
+
+        payday= input("enter day: ").capitalize()
+        
+        
+        for key,value in x.items():
+            
+            if payday in value:
+                
+                
+                a.firstweekday=key
+            
+            
+        today= datetime.now() 
+
+        current=calendar.weekday(today.year, today.month, today.day)
+        
         if (attempt % 2) == 0:
             attempt+= 1
             print("These are the available days -", paycheck())
             continue
+            
         elif payday not in paycheck():
             attempt+= 1
             print ("Input is incorrect, Check your spelling")
             continue
-
+        
+        
         else:
+            
+            
+            
+            if a.firstweekday == current:
+                
+                
+                
+                message= f" Hey {create_account.full_name} save {Savings.final_savings(start)} today"
+    
+                s = smtplib.SMTP('smtp.gmail.com',587)
 
-            message= f" Hey {create_account.full_name} I will remind you to save {Savings.final_savings(start)} every {payday}"
+                s.starttls()
 
-            break
+                s.login("kboadu16@gmail.com", "xoaryqsilwhrsseh")
 
-
-
-    s = smtplib.SMTP('smtp.gmail.com',587)
-
-    s.starttls()
-
-    s.login("kboadu16@gmail.com", "xoaryqsilwhrsseh")
-
-    s.sendmail('&&&&&&&&&&&',create_account.email, message)
-
-
-    print("REMINDER SUCCESSFULLY SET! CHECK YOUR EMAIL ")
-
-
+                s.sendmail('&&&&&&&&&&&',create_account.email, message)
+                
+                print(f"REMINDER SUCCESSFULLY SET ,YOU GOT PAID TODAY! ,Will remind you to start saving next week {payday}")
 
     
+                break
+        
+            
+            else:
+                
 
+                message= f" Hey {create_account.full_name} I will remind you to save {Savings.final_savings(start)} every {payday}"
+
+                s = smtplib.SMTP('smtp.gmail.com',587)
+
+                s.starttls()
+
+                s.login("kboadu16@gmail.com", "xoaryqsilwhrsseh")
+
+                s.sendmail('&&&&&&&&&&&',create_account.email, message)
+
+                print("REMINDER SUCCESSFULLY SET! CHECK EMAIL")
+
+
+
+  
+
+
+
+            
+            
+
+       
+            
+                
+
+    
+    
+    
+    
+ 
 
 
