@@ -57,7 +57,10 @@ class EmailReminders(UserIncomeCalculator):
               self.payPeriod=14
 
       def get_payPeriod(self):
-            return self.payPeriod
+            if self.payPeriod== 7:  
+              return "week"
+            return "two-weeks"
+           
 
 
       def next_PayDate(self):
@@ -84,7 +87,7 @@ class EmailReminders(UserIncomeCalculator):
             s.starttls()
             s.login("kboadu16@gmail.com", "xoaryqsilwhrsseh")
             s.sendmail('&&&&&&&&&&&',self.email, message)
-            print(f"REMINDER SUCCESSFULLY SET ,YOU GOT PAID TODAY! ,Will remind you to start saving next week {self.payCheckDay}")
+            print(f"REMINDER SUCCESSFULLY SET ,YOU GOT PAID TODAY! ,Will remind you to start saving every {self.get_payPeriod()} on {self.payCheckDay}")
           
 
       def secondMessage(self):
@@ -93,7 +96,7 @@ class EmailReminders(UserIncomeCalculator):
             s.starttls()
             s.login("kboadu16@gmail.com", "xoaryqsilwhrsseh")
             s.sendmail('&&&&&&&&&&&',self.email, message)
-            print(f"REMINDER SUCCESSFULLY SET ,Will remind you to start saving every {self.get_payPeriod()} on {self.payCheckDay})CHECK EMAIL for verification")
+            print(f"REMINDER SUCCESSFULLY SET ,Will remind you to start saving every {self.get_payPeriod()} on {self.payCheckDay} CHECK EMAIL for verification \n next pay date is {self.next_PayDate()}" )
     
             
 
@@ -107,10 +110,11 @@ class EmailReminders(UserIncomeCalculator):
 if __name__== '__main__':
       
       userIncome= UserIncomeCalculator(20,25)
-      email= EmailReminders("sunday","daniel","mrboadu3@gmail.com",userIncome.percentageToSave,userIncome.hourWage)
-      email.set_payPeriod("weekly")
+      email= EmailReminders("monday","daniel","mrboadu3@gmail.com",userIncome.percentageToSave,userIncome.hourWage)
+      email.set_payPeriod("biweekly")
       while True:
         email.checkTodayDate()
+        print(email.next_PayDate())
         break
 
 
