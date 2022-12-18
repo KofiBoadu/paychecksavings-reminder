@@ -74,11 +74,11 @@ class EmailReminders(UserIncomeCalculator):
       def checkTodayDate(self):
             currentDate= datetime.datetime.now().date()
             if self.get_payPeriod()== currentDate:
-              return self.currentMessage()
-            return self.otherMessage()
+              return self.firstMessage()
+            return self.secondMessage()
 
 
-      def currentMessage(self):
+      def firstMessage(self):
             message= f" Hey {self.fullName} save {self.weekSavings()} today"
             s = smtplib.SMTP('smtp.gmail.com',587)
             s.starttls()
@@ -87,13 +87,14 @@ class EmailReminders(UserIncomeCalculator):
             print(f"REMINDER SUCCESSFULLY SET ,YOU GOT PAID TODAY! ,Will remind you to start saving next week {self.payCheckDay}")
           
 
-      def otherMessage(self):
+      def secondMessage(self):
             message= f" Hey {self.fullName} save {self.weekSavings()} on {self.payCheckDay}"
             s = smtplib.SMTP('smtp.gmail.com',587)
             s.starttls()
             s.login("kboadu16@gmail.com", "xoaryqsilwhrsseh")
             s.sendmail('&&&&&&&&&&&',self.email, message)
-            print("REMINDER SUCCESSFULLY SET ,CHECK EMAIL")
+            print(f"REMINDER SUCCESSFULLY SET ,Will remind you to start saving every {self.get_payPeriod()} on {self.payCheckDay})CHECK EMAIL for verification")
+    
             
 
 
