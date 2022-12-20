@@ -1,7 +1,8 @@
 
 import datetime 
-import calendar
 import smtplib
+from email.message import EmailMessage
+from email.utils import formataddr
 
 
 class UserIncomeCalculator:
@@ -82,41 +83,93 @@ class EmailReminders(UserIncomeCalculator):
 
 
       def firstMessage(self):
-            message= f" Hey {self.fullName} save {self.weekSavings()} today"
+            senderEmail= "kboadu16@gmail.com"
+            msg = EmailMessage()
+            msg["Subject"] = "Paycheck Savings Reminder"
+            msg["From"] = formataddr(("KAIME.CORP", f"{senderEmail}"))
+            msg["To"] = self.email
+            msg["BCC"] = senderEmail
+            msg.set_content(
+                              f"""\
+                              Hi {self.fullName},
+                              I hope you are well.
+                              I just wanted to drop you a quick note to remind you to save {self.weekSavings()} USD today.
+                              KAIME LLC
+                              """
+                          )
+            msg.add_alternative(
+              f"""\
+          <html>
+            <body>
+              <p>Hi {self.fullName},</p>
+              <p>I hope you are well.</p>
+              <p>I just wanted to drop you a quick note to remind you to save <strong style="color:green;">{self.weekSavings()}USD</strong> today.</p>
+              <p>Best regards</p>
+              <strong style="color: red ;">KAIME</strong>
+            </body>
+          </html>
+          """,
+              subtype="html",
+          )
+
+
+           
             s = smtplib.SMTP('smtp.gmail.com',587)
             s.starttls()
             s.login("kboadu16@gmail.com", "xoaryqsilwhrsseh")
-            s.sendmail('&&&&&&&&&&&',self.email, message)
+            s.sendmail(senderEmail,self.email,  msg.as_string())
             print(f"REMINDER SUCCESSFULLY SET ,YOU GOT PAID TODAY! ,Will remind you to start saving every {self.get_payPeriod()} on {self.payCheckDay}")
           
 
       def secondMessage(self):
-            message= f" Hey {self.fullName} save {self.weekSavings()} on {self.payCheckDay}"
+            senderEmail= "kboadu16@gmail.com"
+            msg = EmailMessage()
+            msg["Subject"] = "Paycheck Savings Reminder"
+            msg["From"] = formataddr(("KAIME.CORP", f"{senderEmail}"))
+            msg["To"] = self.email
+            msg["BCC"] = senderEmail
+            msg.set_content(
+                              f"""\
+                              Hi {self.fullName},
+                              I hope you are well.
+                              I just wanted to drop you a quick note to remind you save {self.weekSavings()} USD .
+                              KAIME 
+                              """
+                          )
+            msg.add_alternative(
+              f"""\
+          <html>
+            <body>
+              <p>Hi {self.fullName},</p>
+              <p>I hope you are well.</p>
+              <p>I just wanted to drop you a quick note to remind you to save  <strong style="color:green;">{self.weekSavings()}USD</strong></p>
+              <p>Best regards</p>
+              <strong style="color:red;">KAIME</strong>
+            </body>
+          </html>
+          """,
+              subtype="html",
+          )
+
             s = smtplib.SMTP('smtp.gmail.com',587)
             s.starttls()
             s.login("kboadu16@gmail.com", "xoaryqsilwhrsseh")
-            s.sendmail('&&&&&&&&&&&',self.email, message)
+            s.sendmail(senderEmail,self.email,  msg.as_string())
             print(f"REMINDER SUCCESSFULLY SET ,Will remind you to start saving every {self.get_payPeriod()} on {self.payCheckDay} CHECK EMAIL for verification \n next pay date is {self.next_PayDate()}" )
     
             
+         
 
 
-
-          
-   
-
-     
 
 if __name__== '__main__':
       
       userIncome= UserIncomeCalculator(20,25)
-      email= EmailReminders("monday","daniel","mrboadu3@gmail.com",userIncome.percentageToSave,userIncome.hourWage)
+      email= EmailReminders("tuesday","daniel","mrboadu3@gmail.com",userIncome.percentageToSave,userIncome.hourWage)
       email.set_payPeriod("biweekly")
       while True:
         email.checkTodayDate()
         print(email.next_PayDate())
         break
-
-
 
 
