@@ -11,22 +11,17 @@ DATABASE= 'save.db'
 SECRET_KEY= os.urandom(30)
 
 
-application= Flask(__name__)
-application.config.from_object(__name__)
+app= Flask(__name__)
+app.config.from_object(__name__)
 
 
 #connecting to database
 def connect_db():
-	return sqlite3.connect(application.config['DATABASE'])
-
-
+	return sqlite3.connect(app.config['DATABASE'])
 
 #My route to get user details and append to the database 
 
-
-
-
-@application.route('/',methods=['GET','POST'])
+@app.route('/',methods=['GET','POST'])
 def add_to_database():
 	if request.method== "GET":
 		session['log_on']= True
@@ -61,8 +56,8 @@ def add_to_database():
 
 
 
-# if __name__=="__main__":
-# 	application.run(debug=True)
+if __name__=="__main__":
+	app.run(debug=True)
 	
 
 
