@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAIME</title>
+    <link href="../static/styles/index.css" rel="stylesheet" />
+    <link rel="stylesheet"  href="{{url_for('static', filename='styles/index.css')}}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <nav class="nav">
+        <a class="nav__logo">KAI ME</a>
+        <ul class="nav__menu menu">
+            <li>
+                <a href="" class=" nav__menuItem menuItem">How It Works</a>
+            </li>
+            <li>
+                <a href="" class=" nav__menuItem menuItem">FAQ</a>
+            </li>
+            <li>
+                <a href="" class="nav__menuItem menuItem">Contact</a>
+            </li>
+        </ul>
+        <button class="hamburger">
+            <!-- material icons https://material.io/resources/icons/ -->
+            <i class="menuIcon  material-icons">menu</i>
+            <i class="closeIcon  material-icons">close</i>
+        </button>
+    </nav>
+
+    <section class="intro">
+        <h1 class="intro__header">KAIME</h1>
+        <p class="intro__subHeader">Reach your Saving Goals</p>
+        <button class="intro__button button">
+            KAIME
+            (SAVE NOW)
+
+        </button>
+    </section>
+    <div class="modal">
+        <div class="modal__content">
+            <form class="modal__form" method="POST">
+                <h2 class="modal__form--header"> Reminder Form</h2>
+                <span class="modal__close close">&times;</span>
+                <input class="modal__form--input" type="number" id="percent"
+                    placeholder="What percentage do you want to save? " name=percent value="{{request.form.percent}}">
+                <input class="modal__form--input" type="number" id="hourWage"
+                    placeholder=" How much do you make an hour? " name=hourWage value="{{request.form.hourWage}}">
+                <input class="modal__form--input" type="text" id="payday"
+                    placeholder="what day do you get paid? e.g, monday" name=payday value="{{request.form.payday}}">
+                <input class="modal__form--input" type="text" id="username" placeholder="Enter full name" name=username
+                    value="{{request.form.username}}">
+                <input class="modal__form--input" type="email" id="email" placeholder="Email? " name=email value="{{request.form.email}}">
+                <input class="modal__form--input" type="text" id="payperiod"
+                    placeholder="whats your pay period? e.g, weekly or biweekly" name=payperiod value="{{request.form.payperiod}}">
+                <button class="modal__form--submit" type="submit">Submit</button>
+
+            </form>
+            {{data}}
+        </div>
+    </div>
+    <section class="how">
+        <h2 class="how__header">How It Works</h2>
+        <div class="how__card">
+            <img class="how__card--icon" src="https://img.icons8.com/ios/50/000000/1-circle.png" />
+            <p class="how__instruction">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua.</p>
+
+
+        </div>
+        <div class="how__card">
+
+            <img class="how__card--icon" src="https://img.icons8.com/ios/50/000000/2-circle.png"
+                style="font: size 6px;" />
+            <p class="how__instruction">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua.</p>
+
+        </div>
+        <div class="how__card">
+            <img class="how__card--icon" src="https://img.icons8.com/ios/50/000000/3-circle.png" />
+            <p class="how__instruction">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua.</p>
+
+
+        </div>
+
+    </section>
+    <section class="faq">
+        <h2 class="faq__header"> Frequently Asked Questions</h2>
+        <div class="faq__container">
+            <h4 class="faq__questions"> HOW DOES KAIME WORK?</h3>
+                <p class="faq__answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="faq__container">
+            <h4 class="faq__questions">WHEN DO I GET A REMINDER?</h3>
+                <p class="faq__answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="faq__container">
+            <h4 class="faq__questions">HOW DO I CANCEL A REMINDER?</h3>
+                <p class="faq__answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+
+
+
+
+
+
+    </section>
+    <section class="footer">
+        <div class="footer__section">
+            <h5 class="footer__header">About KAIME</h5>
+
+        </div>
+        <div class="footer__section">
+            <h5 class="footer__header">Site Links</h5>
+            <a href="" class="footer__siteLink">How It Works</a>
+            <a href="" class="footer__siteLink">FAQ </a>
+            <a href="" class="footer__siteLink">Contact</a>
+        </div>
+        <div class="footer__section">
+            <h5 class="footer__header">Socials</h5>
+
+        </div>
+
+
+    </section>
+    <script src="../static/scripts/nav.js"></script>
+    <script src="../static/scripts/reminderForm.js"></script>
+
+</body>
+
+</html>
