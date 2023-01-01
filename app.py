@@ -57,8 +57,8 @@ def add_to_database():
 
 
 
-if __name__=="__main__":
-	application.run(debug=True)
+# if __name__=="__main__":
+# 	application.run(debug=True)
 	
 
 
