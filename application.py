@@ -22,7 +22,6 @@ def connect_db():
 #My route to get user details and append to the database 
 
 @application.route('/',methods=['GET','POST'])
-
 def add_to_database():
 	if request.method== "GET":
 		session['log_on']= True
