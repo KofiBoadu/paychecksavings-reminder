@@ -7,106 +7,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KAIME</title>
     <link href="../static/styles/index.css" rel="stylesheet" />
-    <link rel="stylesheet"  href="{{url_for('static', filename='styles/index.css')}}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
 <body>
-    <nav class="nav">
-        <a class="nav__logo">KAI ME</a>
-        <ul class="nav__menu menu">
+    <nav class="navBar">
+        <a class="navBar__logo"><img src="../static/images/logo.png" alt="" class="navBar__logo--image"></a>
+        <ul class="menu">
             <li>
-                <a href="" class=" nav__menuItem menuItem">How It Works</a>
+                <a href="" class=" menuItem">How It Works</a>
             </li>
             <li>
-                <a href="" class=" nav__menuItem menuItem">FAQ</a>
+                <a href="" class="menuItem">FAQ</a>
             </li>
             <li>
-                <a href="" class="nav__menuItem menuItem">Contact</a>
+                <a href="" class="menuItem">Contact</a>
             </li>
         </ul>
         <button class="hamburger">
             <!-- material icons https://material.io/resources/icons/ -->
-            <i class="menuIcon  material-icons">menu</i>
-            <i class="closeIcon  material-icons">close</i>
+            <img class="closeIcon" src="https://img.icons8.com/material-rounded/36/3aafa9/delete-sign.png"/>
+            <img class="menuIcon" src="https://img.icons8.com/ios-glyphs/36/3aafa9/menu-rounded.png"/>
         </button>
     </nav>
 
     <section class="intro">
-        <h1 class="intro__header">KAIME</h1>
-        <p class="intro__subHeader">Reach your Saving Goals</p>
-        <button class="intro__button button">
-            KAIME
-            (SAVE NOW)
+       
+        <div class="intro__container">
+            <h1 class="intro__header">SAVE NOW</h1>
+            <p class="intro__subHeader">Reach your Saving Goals</p>
+            <h1 class="intro__header--tablet">REACH YOUR SAVINGS GOALS</h1>
+            <p class="intro__subHeader--tablet"> Kaime takes your payday, pay-period ,hourly-wage and what percentage of your paycheck you intend to save every pay-period.</p>
+            <button class="intro__button button">
+                Set Savings Reminder
 
-        </button>
+            </button>
+        
+
+        </div>
+        <img src="../static/images/home1.png" class="intro__image"></img>
     </section>
     <div class="modal">
         <div class="modal__content">
-            <form class="modal__form" method="POST">
+            <form class="modal__form" method="post">
                 <h2 class="modal__form--header"> Reminder Form</h2>
                 <span class="modal__close close">&times;</span>
-                <input class="modal__form--input" type="number" id="percent"
-                    placeholder="What percentage do you want to save? " name=percent value="{{request.form.percent}}">
-                <input class="modal__form--input" type="number" id="hourWage"
-                    placeholder=" How much do you make an hour? " name=hourWage value="{{request.form.hourWage}}">
-                <input class="modal__form--input" type="text" id="payday"
-                    placeholder="what day do you get paid? e.g, monday" name=payday value="{{request.form.payday}}">
-                <input class="modal__form--input" type="text" id="username" placeholder="Enter full name" name=username
-                    value="{{request.form.username}}">
-                <input class="modal__form--input" type="email" id="email" placeholder="Email? " name=email value="{{request.form.email}}">
+                <label for="percent">Full Name</label>
+                <input required class="modal__form--input" type="text" id="username" 
+                    name=username value="">
+                    <label for="percent">Email</label>
+                <input required class="modal__form--input" type="email" id="email"  name=email
+                    value="">
+                <label for="percent">What percentage do you want to save?</label>
+                <input required class="modal__form--input" type="number" id="percent"
+                    name=percent value="">
+                    <label for="percent">How much do you make an hour?</label>
+                <input required class="modal__form--input" type="number" id="hourWage"
+                    placeholder="  " name=hourWage value="">
+                    <label for="percent">what day do you get paid? e.g, monday</label>
+                <input required class="modal__form--input" type="text" id="payday"
+                    placeholder="" name=payday value="">
+                 
+                    <label for="percent">What's your pay period? e.g, weekly or biweekly</label>
                 <input class="modal__form--input" type="text" id="payperiod"
-                    placeholder="whats your pay period? e.g, weekly or biweekly" name=payperiod value="{{request.form.payperiod}}">
+                    placeholder="" name=payperiod value="">
                 <button class="modal__form--submit" type="submit">Submit</button>
-
             </form>
-            {{data}}
         </div>
     </div>
     <section class="how">
         <h2 class="how__header">How It Works</h2>
-        <div class="how__card">
-            <img class="how__card--icon" src="https://img.icons8.com/ios/50/000000/1-circle.png" />
-            <p class="how__instruction">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua.</p>
-
-
+       <img class="how__picture" src="../static/images/home2.png">
+        <div class="how__container">
+            <div class="how__card">
+                <img class="how__card--icon" src="https://img.icons8.com/ios/50/000000/1-circle.png" />
+                <p class="how__instruction">Kaime takes your payday, pay-period ,hourly-wage and what percentage of your paycheck you intend to save every pay-period. </p>
+            </div>
+            <div class="how__card">
+                <img class="how__card--icon" src="https://img.icons8.com/ios/50/000000/2-circle.png"
+                    style="font: size 6px;" />
+                <p class="how__instruction">Kaime does the calculation and keeps track of that amount.</p>
+            </div>
+            <img class="how__image"src="../static/images/calc.png">
+            <div class="how__card">
+                <img class="how__card--icon" src="https://img.icons8.com/ios/50/000000/3-circle.png" />
+                <p class="how__instruction">You will receive an email reminder on every pay-day to save such an amount.</p>
+    
+            </div>
+            
         </div>
-        <div class="how__card">
-
-            <img class="how__card--icon" src="https://img.icons8.com/ios/50/000000/2-circle.png"
-                style="font: size 6px;" />
-            <p class="how__instruction">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua.</p>
-
-        </div>
-        <div class="how__card">
-            <img class="how__card--icon" src="https://img.icons8.com/ios/50/000000/3-circle.png" />
-            <p class="how__instruction">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua.</p>
-
-
-        </div>
-
     </section>
     <section class="faq">
         <h2 class="faq__header"> Frequently Asked Questions</h2>
         <div class="faq__container">
             <h4 class="faq__questions"> HOW DOES KAIME WORK?</h3>
-                <p class="faq__answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.</p>
+                <p class="faq__answer">Kaime takes your payday, pay-period ,hourly-wage and what percentage of your paycheck you intend to save every pay-period. Kaime does the calculation and keeps track of that amount.  </p>
         </div>
         <div class="faq__container">
             <h4 class="faq__questions">WHEN DO I GET A REMINDER?</h3>
-                <p class="faq__answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.</p>
+                <p class="faq__answer">You will receive an email reminder on every pay-day to save such an amount.</p>
         </div>
         <div class="faq__container">
             <h4 class="faq__questions">HOW DO I CANCEL A REMINDER?</h3>
-                <p class="faq__answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.</p>
+                <p class="faq__answer">Email us CS@KAIME.corp. Tell us you will like cancel  your reminder and that is it!!</p>
         </div>
 
 
@@ -116,20 +121,33 @@
 
     </section>
     <section class="footer">
-        <div class="footer__section">
-            <h5 class="footer__header">About KAIME</h5>
+        <img class="footer__logo" src="../static/images/logo.png" alt="logo" >
+        <div class="footer__container">
+            <div class="footer__section">
+                <h5 class="footer__header">About KAIME</h5>
+                <p class="footer__about">
+                    Kaime takes your payday, pay-period ,hourly-wage and what percentage of your paycheck you intend to save every pay-period. Kaime does the calculation and keeps track of that amount. You will receive an email reminder on every pay-day  to save such an amount .
+                </p>
+    
+            </div>
+            <div class="footer__section">
+                <h5 class="footer__header">Site Links</h5>
+                <a href="" class="footer__siteLink">How It Works</a>
+                <a href="" class="footer__siteLink">FAQ </a>
+                <a href="" class="footer__siteLink">Contact</a>
+            </div>
+            <div class="footer__section">
+                <h5 class="footer__header">Socials</h5>
+             <div class="footer__section--socials">
+                <img src="../static/images/facebook.png"/>
+                <img src="../static/images/instagram.png"/>
+    
+             </div>
+    
+            </div>
 
         </div>
-        <div class="footer__section">
-            <h5 class="footer__header">Site Links</h5>
-            <a href="" class="footer__siteLink">How It Works</a>
-            <a href="" class="footer__siteLink">FAQ </a>
-            <a href="" class="footer__siteLink">Contact</a>
-        </div>
-        <div class="footer__section">
-            <h5 class="footer__header">Socials</h5>
-
-        </div>
+      
 
 
     </section>

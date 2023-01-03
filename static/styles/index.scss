@@ -1,5 +1,5 @@
-@use "./variables" as *;
-@use "./mixins" as *;
+@use "../styles/variables" as *;
+@use "../styles/mixins" as *;
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300&family=Lato:wght@300&family=Roboto:ital,wght@1,300&display=swap');
 
 * {
@@ -7,149 +7,301 @@
     scroll-behavior: smooth;
 }
 
-.nav {
+//nav styling
+.navBar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    
 
     &__logo {
-        margin-top: 2%;
-        font-family: 'Big Shoulders Display', cursive;
-        font-size:2em
 
-        
+        font-family: 'Big Shoulders Display', cursive;
+        font-size: 2em;
     }
 
-   
-}
-
-.menuItem {
-    display: block;
-    margin: 2rem 4rem;
-    font-size: 1.8rem;
-    color:$darkBlue;
-    text-decoration: none;
-}
-
-.menuItem:hover {
-    text-decoration: underline;
-}
-
-.hamburger {
-    position: fixed;
-    z-index: 100;
-    top: 1rem;
-    right: 1rem;
-    padding: 4px;
-    cursor: pointer;
-    border: none;
-    background: none;
-    
-}
-
-.closeIcon {
-    display: none;
-    font-size: 36px;
-}
-
-
-
-
-.menu {
-    position: fixed;
-    transform: translateY(-100%);
-    transition: transform 0.2s;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 5%;
-    z-index: 99;
-    background:$lightBlue;
-    color:$darkBlue;
-    list-style: none;
-    padding-top: 4rem;
-}
-
-.showMenu {
-    transform: translateY(0);
-}
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal__content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-
-/* The Close Button */
-.modal__close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.modal__close:hover,
-.modal__close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.intro{
-    background: url("../assets/intro.png");
-    
-   
-    height:300px;
-    text-align: center;
-    
-    &__header{
-        padding-top: 20%;
-        font-family: 'Big Shoulders Display', cursive;
-        font-size:4em;
-        color:$white;
+    &__logo--image {
+        width: 80px;
+        height: 80px;
     }
 
-    &__subHeader{
-        color: $white;
-        font-family: 'Roboto';
+}
+
+@include mobile {
+    .menuItem {
+        display: block;
+        margin: 2rem 4rem;
+        font-size: 1.8rem;
+        color: $darkBlue;
+        text-decoration: none;
+        font-family: 'Big Shoulders Display';
         font-weight: 800;
     }
+
+    .menuItem:hover {
+        text-decoration: underline;
+    }
+
+    .hamburger {
+        position: static;
+        z-index: 100;
+        top: 1rem;
+        right: 1rem;
+        padding: 4px;
+        cursor: pointer;
+        border: none;
+        background: none;
+
+    }
+
+    .closeIcon {
+        display: none;
+
+    }
+
+
+
+
+    .menu {
+        position: fixed;
+        transform: translateY(-100%);
+        transition: transform 0.2s;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 5%;
+        z-index: 99;
+        background: #def2f1;
+        height: 500px;
+
+        color: $darkBlue;
+        list-style: none;
+    }
+
+    .showMenu {
+        transform: translateY(0);
+    }
 }
-.how{
-    width:100%;
-    height:1000px;
+
+
+
+//pop up form
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+
+    /* Black w/ opacity */
+    /* Modal Content */
+    &__content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 5%;
+        border: 1px solid #888;
+        width: 80%;
+
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 10%;
+    }
+
+    &__form--header {
+        font-family: 'Big Shoulders Display', cursive;
+        font-size: 3.5em;
+        color: $tealBlue;
+
+
+    }
+
+    &__form--submit {
+        border: 2px solid $tealBlue2;
+        border-radius: 20px;
+        color: white;
+        background-color: $tealBlue2;
+        font-family: "Big Shoulders Display";
+        font-size: 1.5em;
+        font-weight: bolder;
+        margin-top: 5%;
+        align-self: center;
+        width: 80%;
+        padding: 1%;
+        box-shadow: 2px 2px 2px 2px grey;
+
+    }
+
+    input {
+        margin-bottom: 5%;
+        border: none;
+        border-bottom: 2px solid $tealBlue;
+
+
+    }
+
+    label {
+        font-family: 'Lato';
+        font-size: 1em;
+        color: $tealBlue;
+        font-weight: bolder;
+    }
+
+
+    /* The Close Button */
+    &__close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 25px;
+        font-weight: bold;
+        position: absolute;
+        left: 85%;
+    }
+
+    &__close:hover,
+    &__close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+
+    }
+}
+
+
+//home page
+.intro {
+    display: flex;
+    flex-direction: row;
+    background-size: cover;
+    height: 400px;
+    text-align: center;
+    position: relative;
+
+
+    &__image {
+        width: 70%;
+        margin-left: 100;
+        transform: scaleX(-1);
+        position: absolute;
+        left: 30%;
+        top: 25%;
+    }
+
+    &__header {
+        padding-top: 20%;
+        font-family: 'Big Shoulders Display', cursive;
+        font-size: 4em;
+        color: $tealBlue;
+        position: absolute;
+        left: 10%;
+        top: -14%;
+         
+
+
+    }
+
+    &__header--tablet {
+        display: none;
+    }
+
+    &__subHeader {
+        color: $tealBlue;
+        font-family: 'Roboto';
+        font-weight: 800;
+        position: absolute;
+        top: 28%;
+        left: 20%;
+
+    }
+
+    &__subHeader--tablet {
+        display: none;
+    }
+
+
+    &__button {
+        border: 2px solid $tealBlue2;
+        border-radius: 20px;
+        color: white;
+        background-color: $tealBlue2;
+        font-family: "Big Shoulders Display";
+        font-size: 1.2em;
+        font-weight: bolder;
+        position: absolute;
+        top: 40%;
+        left: 10%;
+        padding: 2%;
+        box-shadow: 2px 2px 2px 2px grey;
+
+
+    }
+
+    &__button:hover,
+    &__button:focus {
+        box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+        transform: translateY(-0.25em);
+    }
+}
+
+//instructions
+
+.how {
+    width: 100%;
+    height: 1000px;
     display: flex;
     flex-direction: column;
-    gap: 2%;
-    align-items: center;
+    margin: auto;
+    text-align: center;
     padding-bottom: 10%;
-    padding-top: 10%;
-    background-color: $lightBlue;
-    &__header{
-        text-align: left;
-        font-family: 'Lato';
-        
+    background-color: $tealBlue2;
+      &__picture {
+        display: none;
     }
-    
-    &__card{
+
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 2%;
+        margin-left: 35%;
+        width: 80%
+    }
+
+  
+    &__image {
+        width: 30%;
+        position: absolute;
+        top: 125%;
+        right: 5%;
+    }
+
+
+
+    &__header {
+        text-align: left;
+        font-family: 'Big Shoulders Display';
+        color: $white;
+        font-size: 3.5em;
+        margin: auto;
+    }
+
+    &__card {
         border: 2px solid $white;
         width: 40%;
         height: 40%;
@@ -159,25 +311,33 @@
         padding: 5%;
         border-radius: 5px;
     }
-    &__instruction{
+
+    &__instruction {
         font-family: "Lato";
         margin-top: 2%;
+        line-height: 2em;
     }
+
 }
 
-.faq{
+//frequently asked questions
+.faq {
     text-align: center;
     margin-top: 5%;
     padding-bottom: 10%;
-    &__header{
-        font-family: 'Lato';
+
+    &__header {
+        font-family: 'Big Shoulders Display';
+        font-size: 3em;
     }
-    &__questions{
+
+    &__questions {
         font-family: 'Lato';
         margin-top: 10%;
         color: $tealBlue2;
     }
-    &__answer{
+
+    &__answer {
         font-family: 'Roboto';
         width: 60%;
         margin: auto;
@@ -185,41 +345,197 @@
         color: $darkBlue;
     }
 }
-.footer{
-    width:auto;
-    height: 300px;
+
+//footer
+.footer {
+    width: auto;
+    height: 900px;
     background: $darkBlue;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    
-    
-    
-    
-    &__section{
-       display:  flex;
-       flex-direction: column;
-       margin-top: 5%;
-       margin-left: 35%;
+    &__container {
+        display: flex;
+        flex-direction: column;
     }
-    &__header{
-        color:$lightBlue;
-        font-family: "Roboto";
-        font-size: 1.5em;
+
+    &__section {
+        display: flex;
+        flex-direction: column;
+        margin-top: 2%;
+        text-align: center;
+        margin-bottom: 5%;
     }
-    &__siteLink{
-        color: $white;
+
+    &__logo {
+        width: 30%;
+        height: 30%;
+        align-self: center;
+        margin-left: 35%;
+    }
+
+    &__header {
+        color: $lightBlue;
+        font-family: "Big Shoulders Display";
+        font-size: 3em;
+        margin-bottom: 5%;
+        letter-spacing: .2em;
+    }
+
+    &__about {
+        text-align: center;
+        font-family: 'Lato';
+        font-size: 1em;
+        font-weight: 800;
+        color: #4a9387;
+        width: 80%;
+        margin: auto;
+
+    }
+
+    &__siteLink {
+        color: #4a9387;
         text-align: center;
         text-decoration: none;
+        font-family: 'Lato';
+        font-size: 1em;
+        font-weight: 800;
+    }
+
+    &__siteLink:hover {
+        text-decoration: underline;
     }
 }
+
 .four {
-    z-index:0;
-    transform:scale(1);
+    z-index: 0;
+    transform: scale(1);
+
     .modal-background {
-      background:rgba(0,0,0,.7);
-      .modal {  
-        animation: blowUpModal .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-      }
+        background: rgba(0, 0, 0, .7);
+
+        .modal {
+            animation: blowUpModal .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+        }
+    }
+}
+
+@include tablet {
+    .hamburger {
+        display: none;
+    }
+
+    .menu {
+        transform: none;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        background: none;
+        width: 50%;
+        height: 10%;
+        margin-top: 2%;
+    }
+
+    li {
+        text-align: center;
+        width: 55%;
+    }
+
+    .menuItem {
+        width: 60%;
+        font-size: 1.4em;
+        color: $darkBlue;
+        margin: auto;
+    }
+
+    .intro {
+
+
+        &__subHeader {
+            display: none;
+        }
+
+        &__header {
+            display: none;
+        }
+
+        &__header--tablet {
+            display: block;
+            font-size: 4em;
+            margin-top: 6%;
+            font-family: "Big Shoulders Display";
+            letter-spacing: 5%;
+            margin-right: 2%;
+            color: $darkBlue;
+            text-shadow: 2px 2px grey;
+
+
+        }
+
+        &__subHeader--tablet {
+            display: block;
+            width: 50%;
+            font-size: 1.5em;
+            margin-top: 10%;
+            font-family: "Big Shoulders Display";
+            color: $tealBlue;
+            font-weight: 600;
+            line-height: 1.8em;
+            margin: auto;
+
+        }
+
+        &__button {
+            margin-left: 30%;
+            margin-top: 15%;
+
+        }
+
+        &__image {
+            display: none;
+        }
+    }
+
+    .how {
+        padding: 0%;
+        height: 700px;
+        background: $darkBlue;
+        &__picture{
+            display: block;
+            width:40%;
+            position: absolute;
+            top:31%;       
+        }
+        &__image {
+            display: none;
+        }
+
+        &__header {
+            margin-top: 5%;
+            margin-bottom: 0px;
+
+        }
+
+        &__container {
+            flex-direction: row;
+            margin: auto;
+            margin-top: 5%;
+            margin-bottom: 2%;
+            gap: 5%;
+        }
+
+        &__card {
+            height: 80%;
+        }
+
+
+
+    }
+ 
+
+    .footer {
+       height: 900px;
+       &__logo{
+        width:20%;
+        height: 20%;
+        margin-left:40%;
+       }
     }
 }
