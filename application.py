@@ -1,13 +1,14 @@
 from reminder import *
 from flask import Flask, render_template,request, url_for,g,redirect, flash,session
-import sqlite3
+import pymysql
 import datetime
 import os
+from database import *
 
 
 
 #configurations
-DATABASE= 'save.db'
+# DATABASE= 'kaimedb'
 SECRET_KEY= os.urandom(30)
 
 
@@ -15,11 +16,6 @@ application= Flask(__name__)
 application.config.from_object(__name__)
 
 
-#connecting to database
-def connect_db():
-	return sqlite3.connect(application.config['DATABASE'])
-
-#My route to get user details and append to the database 
 
 @application.route('/',methods=['GET','POST'])
 def add_to_database():
@@ -29,7 +25,6 @@ def add_to_database():
 
 	if request.method=="POST":
 		session.pop('log_on',None)
-		g.db= connect_db()
 		percent= request.form['percent']
 		hourWage= request.form['hourWage']
 		USERINCOME= UserIncomeCalculator(percent,hourWage)
@@ -42,10 +37,7 @@ def add_to_database():
 		USERFULLDETAILS= EmailReminders(payday, user, email,USERINCOME.percentageToSave,USERINCOME.hourWage)
 		USERFULLDETAILS.set_payPeriod(payPeriod)
 		payDate= USERFULLDETAILS.next_PayDate()
-		values=[(user,email,payday,percent,payPeriod,savings,payDate,reminderSent)]
-		g.db.executemany("INSERT INTO saversAccount VALUES (?,?,?,?,?,?,?,?)",values)
-		g.db.commit()
-		g.db.close()
+		insert_to_DATABASE(user,email,payday,percent,payPeriod,savings,payDate,reminderSent)
 		data= USERFULLDETAILS.checkTodayDate()
 		return redirect(url_for('add_to_database'))
 
@@ -56,8 +48,8 @@ def add_to_database():
 
 
 
-# if __name__=="__main__":
-# 	application.run(debug=True)
+if __name__=="__main__":
+	application.run(debug=True)
 	
 
 

@@ -56,23 +56,23 @@
                 <span class="modal__close close">&times;</span>
                 <label for="percent">Full Name</label>
                 <input required class="modal__form--input" type="text" id="username" 
-                    name=username value="">
+                    name=username value="{{request.form.username}}">
                     <label for="percent">Email</label>
                 <input required class="modal__form--input" type="email" id="email"  name=email
-                    value="">
+                    value="{{request.form.email}}">
                 <label for="percent">What percentage do you want to save?</label>
                 <input required class="modal__form--input" type="number" id="percent"
-                    name=percent value="">
+                    name=percent value="{{request.form.percent}}">
                     <label for="percent">How much do you make an hour?</label>
                 <input required class="modal__form--input" type="number" id="hourWage"
-                    placeholder="  " name=hourWage value="">
+                    placeholder="  " name=hourWage value="{{request.form.hourWage}}">
                     <label for="percent">what day do you get paid? e.g, monday</label>
                 <input required class="modal__form--input" type="text" id="payday"
-                    placeholder="" name=payday value="">
+                    placeholder="" name=payday value="{{request.form.payday}}">
                  
                     <label for="percent">What's your pay period? e.g, weekly or biweekly</label>
                 <input class="modal__form--input" type="text" id="payperiod"
-                    placeholder="" name=payperiod value="">
+                    placeholder="" name=payperiod value="{{request.form.payperiod}}">
                 <button class="modal__form--submit" type="submit">Submit</button>
             </form>
         </div>
