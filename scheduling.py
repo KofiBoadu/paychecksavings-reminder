@@ -1,12 +1,11 @@
-import sqlite3
 import sched 
 import time
 import datetime
 from email.message import EmailMessage
 from email.utils import formataddr
 import smtplib
-from database import *
 import pymysql
+from reminder import * 
 
 
 
@@ -14,14 +13,14 @@ def sending_emailReminders(recieverEmail,name,amount2Save):
 	senderEmail= "kboadu16@gmail.com"
 	msg = EmailMessage()
 	msg["Subject"] = "Paycheck Savings Reminder"
-	msg["From"] = formataddr(("KAIME.CORP", f"{senderEmail}"))
+	msg["From"] = formataddr(("KAIME ", f"{senderEmail}"))
 	msg["To"] = recieverEmail
 	msg["BCC"] = senderEmail
 	msg.set_content(
                         f"""\
                               Hi {name},
                               I hope you are well.
-                               Please remember to  save  <strong style="color:green;">USD{amount2Save}</strong> Today .
+                              Please remember to  save  <strong style="color:green;">USD{amount2Save}</strong> Today .
                               KAIME LLC
                               """
                     )
@@ -46,10 +45,15 @@ def sending_emailReminders(recieverEmail,name,amount2Save):
 
 
 def database_queryResults():
-	weekday=datetime.datetime.now().date().weekday()
-	weekdays= {0:"Monday",1:"Tuesday",2:"Wednesday",3:"Thursday",4:"Friday",5:"Saturday",6:"Sunday"}
-	day=weekdays[weekday]
-	date=str(datetime.datetime.now().date())
+	# weekday=datetime.datetime.now().date().weekday()
+	today=datetime.date.today()
+	current_day_of_week = today.isoweekday()
+	weekdays= {1:"Monday",2:"Tuesday",3:"Wednesday",4:"Thursday",5:"Friday",6:"Saturday",7:"Sunday"}
+	day=weekdays[current_day_of_week]
+	print(day)
+	# date=str(datetime.datetime.now().date())
+	date= today
+	print(date)
 	with pymysql.connect(host='database-2.cniq3f7gind2.us-east-1.rds.amazonaws.com',port=3306,user='admin',password='kaime2023',db='kaimedb',) as connection:
 		c= connection.cursor()
 		c.execute("SELECT * FROM saversAccount WHERE payDay=%s AND payDate=%s AND reminderSent='False' ",(day,date,))
@@ -78,18 +82,18 @@ def  schedule_reminders():
 
 
 def reminder_run():
-	while True:
-		s = sched.scheduler(time.time, time.sleep)
-		s.enter(1,1,schedule_reminders)
-		s.run()
-		if s.empty():
-			update_database()
-		time.sleep(60)
+	s = sched.scheduler(time.time, time.sleep)
+	s.enter(1,1,schedule_reminders)
+	s.run()
+	if s.empty():
+		update_database()
+
 
 
 
 if __name__=="__main__":
 	reminder_run()
+	
 	
 	
 
