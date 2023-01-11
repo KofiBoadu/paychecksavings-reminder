@@ -185,7 +185,8 @@
 .intro__subHeader--tablet {
   display: none;
 }
-.intro__button {
+
+#intro__button {
   border: 2px solid #3aafa9;
   border-radius: 20px;
   color: white;
@@ -291,10 +292,10 @@
   margin-bottom: 5%;
 }
 .footer__logo {
-  width: 20%;
-  height: 20%;
+  width: 100px;
+  height: 100px;
   align-self: center;
-  margin-left: 40%;
+  margin-left: 35%;
 }
 .footer__header {
   color: #def2f1;

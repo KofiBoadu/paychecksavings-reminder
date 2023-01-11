@@ -238,9 +238,9 @@
         display: none;
     }
 
-
-    &__button {
-        border: 2px solid $tealBlue2;
+}
+#intro__button{
+    border: 2px solid $tealBlue2;
         border-radius: 20px;
         color: white;
         background-color: $tealBlue2;
@@ -252,10 +252,8 @@
         left: 10%;
         padding: 2%;
         box-shadow: 2px 2px 2px 2px grey;
-    }
 
 }
-
 //instructions
 
 .how {
@@ -369,10 +367,10 @@
     }
 
     &__logo {
-        width: 20%;
-        height: 20%;
+        width: 100px;
+        height: 100px;
         align-self: center;
-        margin-left: 40%;
+        margin-left: 35%;
     }
 
     &__header {
