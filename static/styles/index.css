@@ -160,7 +160,7 @@
   transform: scaleX(-1);
   position: absolute;
   left: 30%;
-  top: 25%;
+  top: 40%;
 }
 .intro__header {
   padding-top: 20%;
@@ -223,7 +223,7 @@
 .how__image {
   width: 30%;
   position: absolute;
-  top: 100%;
+  top: 150%;
   right: 6%;
 }
 .how__header {
@@ -429,9 +429,9 @@
     height: 900px;
   }
   .footer__logo {
-    width: 20%;
-    height: 20%;
-    margin-left: 40%;
+    width: 100px;
+    height: 100px;
+    margin-left: 35%;
   }
 }
 @media screen and (min-width: 1000px) and (max-width: 1250px) {
