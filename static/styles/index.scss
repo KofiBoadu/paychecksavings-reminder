@@ -28,6 +28,9 @@
 }
 
 @include mobile {
+    .intro{
+        height: 400px;
+    }
     .menuItem {
         display: block;
         margin: 2rem 4rem;
@@ -36,6 +39,7 @@
         text-decoration: none;
         font-family: 'Big Shoulders Display';
         font-weight: 800;
+    
     }
 
     .menuItem:hover {
@@ -211,7 +215,7 @@
         position: absolute;
         left: 10%;
         top: -14%;
-         
+
 
 
     }
@@ -248,15 +252,8 @@
         left: 10%;
         padding: 2%;
         box-shadow: 2px 2px 2px 2px grey;
-
-
     }
 
-    &__button:hover,
-    &__button:focus {
-        box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
-        transform: translateY(-0.25em);
-    }
 }
 
 //instructions
@@ -270,7 +267,8 @@
     text-align: center;
     padding-bottom: 10%;
     background-color: $tealBlue2;
-      &__picture {
+
+    &__picture {
         display: none;
     }
 
@@ -278,17 +276,18 @@
     &__container {
         display: flex;
         flex-direction: column;
-        gap: 2%;
-        margin-left: 35%;
-        width: 80%
+        gap: 10%;
+        margin-left: 20%;
+        width: 70%;
     }
 
-  
+
     &__image {
         width: 30%;
         position: absolute;
-        top: 125%;
-        right: 5%;
+        top: 100%;
+        right: 6%;
+        
     }
 
 
@@ -299,11 +298,14 @@
         color: $white;
         font-size: 3.5em;
         margin: auto;
+        margin-bottom: 2%;
+        margin-top: 0%;
+        padding-top: 5%;
     }
 
     &__card {
         border: 2px solid $white;
-        width: 40%;
+        width: 70%;
         height: 40%;
         background-color: $white;
         align-items: center;
@@ -351,9 +353,11 @@
     width: auto;
     height: 900px;
     background: $darkBlue;
+
     &__container {
         display: flex;
         flex-direction: column;
+        
     }
 
     &__section {
@@ -365,10 +369,10 @@
     }
 
     &__logo {
-        width: 30%;
-        height: 30%;
+        width: 20%;
+        height: 20%;
         align-self: center;
-        margin-left: 35%;
+        margin-left: 40%;
     }
 
     &__header {
@@ -436,6 +440,8 @@
     li {
         text-align: center;
         width: 55%;
+        list-style: none;
+        font-family: "Big Shoulders Display";
     }
 
     .menuItem {
@@ -465,8 +471,7 @@
             margin-right: 2%;
             color: $darkBlue;
             text-shadow: 2px 2px grey;
-
-
+            text-align: center;
         }
 
         &__subHeader--tablet {
@@ -497,12 +502,14 @@
         padding: 0%;
         height: 700px;
         background: $darkBlue;
-        &__picture{
+
+        &__picture {
             display: block;
-            width:40%;
+            width: 40%;
             position: absolute;
-            top:31%;       
+            top: 30.5%;
         }
+
         &__image {
             display: none;
         }
@@ -528,14 +535,45 @@
 
 
     }
- 
+
 
     .footer {
-       height: 900px;
-       &__logo{
-        width:20%;
-        height: 20%;
-        margin-left:40%;
+        height: 900px;
+
+        &__logo {
+            width: 20%;
+            height: 20%;
+            margin-left: 40%;
+        }
+    }
+}
+
+@include desktop {
+
+
+    .intro {
+        height: 800px;
+
+       &__container{
+        margin: auto;
+        margin-top:5%;
+       }
+       &__header--tablet{
+        font-size: 6em;
+       }
+       &__button{
+            margin-left:33%;
+            margin-top: 12%;
        }
     }
+      
+
+    
+    .how{
+        &__picture{
+            top:65%;
+        }
+       
+    }
+
 }
