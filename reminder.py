@@ -46,9 +46,10 @@ class EmailReminders(UserIncomeCalculator):
 
 
       def set_payPeriod(self,payPeriod):
-        if payPeriod=="weekly":
+        period= payPeriod.lower()
+        if period=="weekly":
           self.payPeriod= 7
-        if payPeriod=="biweekly":
+        if period=="biweekly":
           self.payPeriod=14
 
       def get_payPeriod(self):
