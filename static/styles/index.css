@@ -19,7 +19,10 @@
   height: 80px;
 }
 
-@media screen and (min-width: 320px) {
+@media screen and (min-width: 250px) and (max-width: 768px) {
+  .intro {
+    height: 400px;
+  }
   .menuItem {
     display: block;
     margin: 2rem 4rem;
@@ -196,10 +199,6 @@
   padding: 2%;
   box-shadow: 2px 2px 2px 2px grey;
 }
-.intro__button:hover, .intro__button:focus {
-  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
-  transform: translateY(-0.25em);
-}
 
 .how {
   width: 100%;
@@ -217,15 +216,15 @@
 .how__container {
   display: flex;
   flex-direction: column;
-  gap: 2%;
-  margin-left: 35%;
-  width: 80%;
+  gap: 10%;
+  margin-left: 20%;
+  width: 70%;
 }
 .how__image {
   width: 30%;
   position: absolute;
-  top: 125%;
-  right: 5%;
+  top: 100%;
+  right: 6%;
 }
 .how__header {
   text-align: left;
@@ -233,10 +232,13 @@
   color: #feffff;
   font-size: 3.5em;
   margin: auto;
+  margin-bottom: 2%;
+  margin-top: 0%;
+  padding-top: 5%;
 }
 .how__card {
   border: 2px solid #feffff;
-  width: 40%;
+  width: 70%;
   height: 40%;
   background-color: #feffff;
   align-items: center;
@@ -289,10 +291,10 @@
   margin-bottom: 5%;
 }
 .footer__logo {
-  width: 30%;
-  height: 30%;
+  width: 20%;
+  height: 20%;
   align-self: center;
-  margin-left: 35%;
+  margin-left: 40%;
 }
 .footer__header {
   color: #def2f1;
@@ -351,6 +353,8 @@
   li {
     text-align: center;
     width: 55%;
+    list-style: none;
+    font-family: "Big Shoulders Display";
   }
   .menuItem {
     width: 60%;
@@ -373,6 +377,7 @@
     margin-right: 2%;
     color: #17252A;
     text-shadow: 2px 2px grey;
+    text-align: center;
   }
   .intro__subHeader--tablet {
     display: block;
@@ -401,7 +406,7 @@
     display: block;
     width: 40%;
     position: absolute;
-    top: 31%;
+    top: 30.5%;
   }
   .how__image {
     display: none;
@@ -427,5 +432,24 @@
     width: 20%;
     height: 20%;
     margin-left: 40%;
+  }
+}
+@media screen and (min-width: 1000px) and (max-width: 1250px) {
+  .intro {
+    height: 800px;
+  }
+  .intro__container {
+    margin: auto;
+    margin-top: 5%;
+  }
+  .intro__header--tablet {
+    font-size: 6em;
+  }
+  .intro__button {
+    margin-left: 33%;
+    margin-top: 12%;
+  }
+  .how__picture {
+    top: 65%;
   }
 }/*# sourceMappingURL=index.css.map */
