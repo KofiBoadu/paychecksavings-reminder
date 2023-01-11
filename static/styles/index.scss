@@ -204,7 +204,7 @@
         transform: scaleX(-1);
         position: absolute;
         left: 30%;
-        top: 25%;
+        top: 40%;
     }
 
     &__header {
@@ -285,7 +285,7 @@
     &__image {
         width: 30%;
         position: absolute;
-        top: 100%;
+        top: 150%;
         right: 6%;
         
     }
@@ -541,9 +541,9 @@
         height: 900px;
 
         &__logo {
-            width: 20%;
-            height: 20%;
-            margin-left: 40%;
+            width: 100px;
+            height:100px;
+            margin-left: 35%;
         }
     }
 }
