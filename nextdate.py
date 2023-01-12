@@ -2,6 +2,7 @@ import datetime
 import time 
 from reminder import *
 import pymysql
+from database import * 
 
 
 
@@ -18,18 +19,19 @@ def setNew_schedule_DATE():
 	print(day)
 	date=str(datetime.datetime.now().date())
 	print(date)
-	with pymysql.connect(host='database-2.cniq3f7gind2.us-east-1.rds.amazonaws.com',port=3306,user='admin',password='kaime2023',db='kaimedb',) as connection:
-		c= connection.cursor()
-		c.execute("SELECT email,payDay, payPeriod FROM saversAccount WHERE  payDay !=%s AND payDate !=%s  ",(day,date,))
-		new_dates={}
-		for row in c:
-			new_dates[row[0]]=return_next_date(row[1],row[2])
-		for key, value in new_dates.items():
-			c.execute("UPDATE saversAccount SET payDate=%s  WHERE  Email=%s ",(value,key,))
-			c.execute("UPDATE saversAccount SET reminderSent=%s  WHERE  Email=%s ",('False',key,))
-			
-		new_dates.clear()
+	connection= mysql_CONNECTION()
+	# with pymysql.connect(host='database-2.cniq3f7gind2.us-east-1.rds.amazonaws.com',port=3306,user='admin',password='kaime2023',db='kaimedb',) as connection:
+	c= connection.cursor()
+	c.execute("SELECT email,payDay, payPeriod FROM saversAccount WHERE  payDay !=%s AND payDate !=%s  ",(day,date,))
+	new_dates={}
+	for row in c:
+		new_dates[row[0]]=return_next_date(row[1],row[2])
+	for key, value in new_dates.items():
+		c.execute("UPDATE saversAccount SET payDate=%s  WHERE  Email=%s ",(value,key,))
+		c.execute("UPDATE saversAccount SET reminderSent=%s  WHERE  Email=%s ",('False',key,))
 		connection.commit()
+	new_dates.clear()
+
 
 
 

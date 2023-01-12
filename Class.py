@@ -155,9 +155,8 @@ class EmailReminders(UserIncomeCalculator):
             s.login("kboadu16@gmail.com", "xoaryqsilwhrsseh")
             s.sendmail(senderEmail,self.email,  msg.as_string())
             print(f"REMINDER SUCCESSFULLY SET ,Will remind you to start saving every {self.get_payPeriod()} on {self.payCheckDay} CHECK EMAIL for verification \n next pay date is {self.next_PayDate()}" )
-    
-            
-         
+
+
 
 
 
