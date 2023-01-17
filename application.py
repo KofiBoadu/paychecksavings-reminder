@@ -4,11 +4,15 @@ import datetime
 import os
 from database import *
 from reminder import *
+from dotenv import load_dotenv
 
+load_dotenv()
 
-
-#configurations
-# DATABASE= 'kaimedb'
+#ENVIRONMENT VARIABLES
+EMAIL= os.getenv("EMAIL")
+DATABASE_PASSWORD=os.getenv("DATABASE_PASSWORD")
+EMAIL_PASSWORD=os.getenv("EMAIL_PASSWORD")
+DATABASE_HOST= os.getenv("DATABASE_HOST")
 SECRET_KEY= os.urandom(30)
 
 
@@ -49,8 +53,8 @@ def add_to_database():
 
 	
 
-if __name__== "__main__":
-	application.run(debug=True)
+
+	
 
 	 
 

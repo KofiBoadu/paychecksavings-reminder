@@ -1,8 +1,9 @@
 import pymysql
+from application import DATABASE_PASSWORD
 
 
 def mysql_CONNECTION():
-	connection=pymysql.connect(host='database-2.cniq3f7gind2.us-east-1.rds.amazonaws.com',port=3306,user='admin',password='kaime2023',db='kaimedb',) 
+	connection=pymysql.connect(host='database-2.cniq3f7gind2.us-east-1.rds.amazonaws.com',port=3306,user='admin',password=DATABASE_PASSWORD,db='kaimedb',) 
 	return connection
 
 

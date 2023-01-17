@@ -16,11 +16,8 @@ def setNew_schedule_DATE():
 	weekday=datetime.datetime.now().date().weekday()
 	weekdays= {0:"Monday",1:"Tuesday",2:"Wednesday",3:"Thursday",4:"Friday",5:"Saturday",6:"Sunday"}
 	day=weekdays[weekday]
-	print(day)
 	date=str(datetime.datetime.now().date())
-	print(date)
 	connection= mysql_CONNECTION()
-	# with pymysql.connect(host='database-2.cniq3f7gind2.us-east-1.rds.amazonaws.com',port=3306,user='admin',password='kaime2023',db='kaimedb',) as connection:
 	c= connection.cursor()
 	c.execute("SELECT email,payDay, payPeriod FROM saversAccount WHERE  payDay !=%s AND payDate !=%s  ",(day,date,))
 	new_dates={}
@@ -44,7 +41,6 @@ def setNew_schedule_DATE():
 
 #     new_dates = []
 
-#     with pymysql.connect(host='database-2.cniq3f7gind2.us-east-1.rds.amazonaws.com', port=3306, user='admin', password='kaime2023', db='kaimedb') as connection:
 #         c = connection.cursor()
 
 #         try:
@@ -70,8 +66,8 @@ def setNew_schedule_DATE():
 
 
 
-if __name__=="__main__":
-	setNew_schedule_DATE()
+# if __name__=="__main__":
+# 	setNew_schedule_DATE()
 	
 
 

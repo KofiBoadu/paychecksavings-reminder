@@ -77,7 +77,6 @@ class EmailReminders(UserIncomeCalculator):
     #there is a bug in this function it can only calculate the next week and two weeks if the day is in the past cant to future days right now 
 
       def checkTodayDate(self):
-         # day= datetime.datetime.now().date().weekday()
         day=datetime.date.today().isoweekday()
         dayName= self.days[day]
         if self.payCheckDay== dayName:
@@ -164,7 +163,7 @@ class EmailReminders(UserIncomeCalculator):
 
 
 
-if __name__=="__main__":
-  a= EmailReminders("monday")
-  a.set_payPeriod("weekly")
-  print(a.next_PayDate(), type(a.next_PayDate()))
+# if __name__=="__main__":
+#   a= EmailReminders("monday")
+#   a.set_payPeriod("weekly")
+#   print(a.next_PayDate(), type(a.next_PayDate()))
