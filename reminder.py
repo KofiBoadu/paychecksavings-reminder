@@ -164,7 +164,7 @@ class EmailReminders(UserIncomeCalculator):
 
 
 
-# if __name__=="__main__":
-#   a= EmailReminders("saturday")
-#   a.set_payPeriod("biweekly")
-#   print(a.next_PayDate(), type(a.next_PayDate()))
+if __name__=="__main__":
+  a= EmailReminders("monday")
+  a.set_payPeriod("weekly")
+  print(a.next_PayDate(), type(a.next_PayDate()))

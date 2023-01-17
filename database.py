@@ -17,7 +17,9 @@ def insert_to_DATABASE(user,email,payday,percent,payPeriod,savings,payDate,remin
 
 
 
-# cur=mysql_CONNECTION().cursor()
-# cur.execute("DROP TABLE IF EXISTS saversAccount")
-# cur.execute("CREATE TABLE saversAccount(Name TEXT,Email TEXT,payDay TEXT,percent INT,payPeriod TEXT,savingsAmount INT ,payDate TEXT,reminderSent TEXT)")
+# connection=mysql_CONNECTION()
+# cur=connection.cursor()
+# cur.execute("DELETE FROM saversAccount WHERE Name='Daniel' ")
+# connection.commit()
+# # cur.execute("CREATE TABLE saversAccount(Name TEXT,Email TEXT,payDay TEXT,percent INT,payPeriod TEXT,savingsAmount INT ,payDate TEXT,reminderSent TEXT)")
 
