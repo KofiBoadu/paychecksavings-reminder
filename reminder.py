@@ -5,6 +5,25 @@ from email.utils import formataddr
 
 
 class UserIncomeCalculator:
+  """
+This module defines two classes for calculating income and savings for a user and sending email reminders.
+
+The UserIncomeCalculator class has the following attributes and methods:
+
+init(self, percentageToSave=25, hourWage=20, weekWorkHours=40) initializes the class with the given values for percentage to save, hourly wage, and weekly work hours
+weekGrossIncome(self) returns the user's weekly gross income
+
+monthGrossIncome(self) returns the user's monthly gross income
+
+annualGrossIncome(self) returns the user's annual gross income
+
+weekSavings(self) returns the user's weekly savings based on the percentage to save attribute
+
+monthSavings(self) returns the user's monthly savings based on the percentage to save attribute
+
+annualSavings(self) returns the user's annual savings based on the percentage to save attribute
+
+ """
   def __init__(self,percentageToSave=25,hourWage=20,weekWorkHours=40):
     self.hourWage=float(hourWage)
     self.weekWorkHours=weekWorkHours
@@ -35,6 +54,26 @@ class UserIncomeCalculator:
 
 
 class EmailReminders(UserIncomeCalculator):
+
+  """
+
+  The EmailReminders class inherits from the UserIncomeCalculator class and has the following additional attributes and methods:
+
+  init(self, payCheckDay="monday", fullName="kaime", email="mrboadu3@gmail.com", percentageToSave=25, hourWage=20, weekWorkHours=40) initializes the class with the given values for pay check day, full name, email, percentage to save, hourly wage, and weekly work hours
+  set_payPeriod(self, payPeriod) sets the pay period to "week" or "two-weeks" based on the input value
+
+
+  get_payPeriod(self) returns the pay period attribute
+
+  next_PayDate(self) returns the date of the next pay check
+
+  checkTodayDate(self) returns the first message if today is pay day else it returns the second message
+
+  firstMessage(self) returns the first message
+
+  secondMessage(self) returns the second message
+
+  """
       def __init__(self,payCheckDay="monday",fullName="kaime",email="mrboadu3@gmail.com",percentageToSave=25,hourWage=20,weekWorkHours=40):
         super().__init__(percentageToSave,hourWage,weekWorkHours)
         self.fullName= fullName
@@ -122,6 +161,13 @@ class EmailReminders(UserIncomeCalculator):
         s.sendmail(senderEmail,self.email,  msg.as_string())
         return f"REMINDER SUCCESSFULLY SET ,YOU GOT PAID TODAY! ,Will remind you to start saving every {self.get_payPeriod()} on {self.payCheckDay}"
       
+
+
+
+
+
+
+
 
       def secondMessage(self):
         senderEmail= "kboadu16@gmail.com"

@@ -23,6 +23,12 @@ application.config.from_object(__name__)
 
 @application.route('/',methods=['GET','POST'])
 def add_to_database():
+	"""
+    This function is used for handling GET and POST requests for the 'add_to_database' route.
+    If the request method is 'GET', it sets the 'log_on' session variable to True and renders the 'index.html' template.
+    If the request method is 'POST', it retrieves user input from the request form, calculates the user's savings, 
+    creates an instance of the 'EmailReminders' class, insert the user's details to the database, and redirects to the 'add_to_database' route.
+    """
 	if request.method== "GET":
 		session['log_on']= True
 		return render_template("index.html")
