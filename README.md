@@ -1,2 +1,7 @@
-# paychecksavings-reminder
-This simple program technically takes some details about your pay schedule and your intended amount of savings per every pay period . After entering your email , this program is supposed to send reminders a day before every pay period to save your  specified percentage amount all in USD.
+1.Kaime takes your payday, pay-period ,hourly-wage and what percentage of your paycheck you intend to save every pay-period.
+
+
+2.Kaime does the calculation and keeps track of that amount.
+
+
+3.You will receive an email reminder on every pay-day to save such an amount.
