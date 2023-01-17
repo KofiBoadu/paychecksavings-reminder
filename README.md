@@ -7,4 +7,4 @@
 3.You will receive an email reminder on every pay-day to save such an amount.
 
 
-<a href="https://www.youtube.com/channel/UCvZbRY-0YGBWEC0OW8uAwJg">
+<a href="https://scholarshipacess.000webhostapp.com/index.html">CLICK TO CHECK OUT THE CURRENT PROJECT STATE </a>
