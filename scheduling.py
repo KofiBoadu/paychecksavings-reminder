@@ -51,12 +51,9 @@ def database_queryResults():
 	current_day_of_week = today.isoweekday()
 	weekdays= {1:"Monday",2:"Tuesday",3:"Wednesday",4:"Thursday",5:"Friday",6:"Saturday",7:"Sunday"}
 	day=weekdays[current_day_of_week]
-	print(day)
 	# date=str(datetime.datetime.now().date())
 	date= today
-	print(date)
 	connection= mysql_CONNECTION()
-	# with pymysql.connect(host='database-2.cniq3f7gind2.us-east-1.rds.amazonaws.com',port=3306,user='admin',password='kaime2023',db='kaimedb',) as connection:
 	c= connection.cursor()
 	c.execute("SELECT * FROM saversAccount WHERE payDay=%s AND payDate=%s AND reminderSent='False' ",(day,date,))
 	data= c.fetchall()
@@ -69,7 +66,6 @@ def update_database():
 	day=weekdays[weekday]
 	date=str(datetime.datetime.now().date())
 	connection= mysql_CONNECTION()
-	# with pymysql.connect(host='database-2.cniq3f7gind2.us-east-1.rds.amazonaws.com',port=3306,user='admin',password='kaime2023',db='kaimedb',) as connection:
 	c= connection.cursor()
 	c.execute("UPDATE saversAccount SET reminderSent = 'True' WHERE reminderSent='False' AND payDay=%s AND payDate=%s",(day,date,))
 	connection.commit()
@@ -94,8 +90,8 @@ def reminder_run():
 
 
 
-if __name__=="__main__":
-	reminder_run()
+# if __name__=="__main__":
+# 	reminder_run()
 	
 	
 	
